@@ -1,0 +1,39 @@
+show: [about, featured, summary, languages, weekly, streaks]
+
+look:
+  style: classic
+
+cards:
+  about:
+    headline: "I build *technology*."
+    lines:
+      - "I drive the initiatives around it."
+      - "Hands-on technology leadership across AI, software, and complex operations."
+    facts:
+      "Based in": "Austin, Texas"
+      "Site": "sidnewby.com"
+  languages:
+    repos:
+      prismatic: 0          # its history is counted under an older copy until that one is deleted
+  featured:
+    title: Current focus
+    projects:
+      - name: Capricorn
+        repo: capricorn
+        tagline: Four AI collaborators, one live workspace, and a route to a running build
+        color: ff4d5e
+        lines: 54678
+      - name: Interface
+        repo: interface
+        tagline: Generative UI for a coding agent, from interactive replies to versioned artifacts
+        color: ffc629
+        lines: 37434
+      - name: Prismatic
+        repo: prismatic
+        tagline: Automatic document tagging for subpoena requests
+        color: b45cff
+        lines: 46986
+      - name: Hex
+        tagline: A local workspace for agents to plan, build, and review software together
+        color: 19b8a6
+        note: Coming soon · Open source

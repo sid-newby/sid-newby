@@ -1,0 +1,47 @@
+name: Update README cards
+
+on:
+  schedule:
+    - cron: '17 */2 * * *'   # every 2 hours
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  cards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - name: Get the card generator
+        uses: actions/checkout@v7
+        with:
+          repository: sid-newby/github-cool-readme
+          ref: ca3e06b3afcf0c0a78cac463172546125c4974e1
+          token: ${{ secrets.CARDS_TOKEN }}
+          path: .tool
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - name: Install
+        run: npm ci --omit=dev --no-audit --no-fund --prefix .tool
+      - name: Generate cards
+        env:
+          GITHUB_TOKEN: ${{ secrets.CARDS_TOKEN }}
+        run: node .tool/src/cli.ts --config cool-readme.yml --out "$RUNNER_TEMP/cards"
+      - name: Publish the cards on the cards branch
+        run: |
+          if ! ls "$RUNNER_TEMP"/cards/*.svg >/dev/null 2>&1; then echo "No cards: they're off"; exit 0; fi
+          git fetch --quiet --depth 1 origin cards:refs/remotes/origin/cards 2>/dev/null || true
+          git switch --quiet --orphan cards
+          cp "$RUNNER_TEMP"/cards/*.svg .
+          git add -- *.svg
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit --quiet -m 'Update README cards'
+          if git rev-parse --quiet --verify origin/cards >/dev/null && git diff --quiet origin/cards HEAD; then
+            echo "No changes"
+            exit 0
+          fi
+          git push --force origin cards
