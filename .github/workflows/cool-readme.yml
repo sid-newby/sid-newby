@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v7
         with:
           repository: sid-newby/github-cool-readme
-          ref: ca3e06b3afcf0c0a78cac463172546125c4974e1
+          ref: ee8337125ef926106f20ec8767ce53a55b775294
           token: ${{ secrets.CARDS_TOKEN }}
           path: .tool
       - uses: actions/setup-node@v5

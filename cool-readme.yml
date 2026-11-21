@@ -1,5 +1,8 @@
 show: [about, featured, summary, languages, weekly, streaks]
 
+count:
+  orgs: false
+
 look:
   style: classic
 
