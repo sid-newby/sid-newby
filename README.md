@@ -8,6 +8,7 @@
   <img src="https://raw.githubusercontent.com/sid-newby/sid-newby/cards/featured-light.svg" width="400" alt="Current focus">
 </picture>
 </p>
+
 <p align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sid-newby/sid-newby/cards/summary-dark.svg">
@@ -18,6 +19,7 @@
   <img src="https://raw.githubusercontent.com/sid-newby/sid-newby/cards/languages-light.svg" width="400" alt="Most used languages">
 </picture>
 </p>
+
 <p align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sid-newby/sid-newby/cards/weekly-dark.svg">
